@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^1m8v-vkf-m4jg^&^y_vr28%l8b!t)%dcb(oo$)4-rbdtmxucp'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -142,8 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
-            'client_id': 'Ov23lipwq1V68EGB4Dlo',
-            'secret': '4922b14c82ce1133b424b8f58e60dee4dbeb4454',
+            'client_id': os.getenv('CLIENT_ID'),
+            'secret': os.getenv('CLIENT_SECRET'),
             'key': ''
         }
     }
